@@ -40,7 +40,7 @@ class CDataJSONEncoder(JSONEncoder):
     _traverse_union = _traverse_structure
 
 
-class DictMixIn(object):
+def dictional(cls):
     def __getitem__(self, item):
         return getattr(self, item)
 
@@ -74,6 +74,8 @@ class DictMixIn(object):
 
             yield key, value
 
+    for key, value in locals().items():
+        if key != 'cls':
+            setattr(cls, key, value)
 
-class DictStructure(Structure, DictMixIn): pass
-class DictUnion(Union, DictMixIn): pass
+    return cls

@@ -9,14 +9,15 @@ No dependencies.
 ## Usage
 
 ```python
-from ctypes import c_int
-from binaries import DictStructure
+import ctypes
+import binaries
 
-class Data(DictStructure):
+@binaries.dictional
+class Data(ctypes.Structure):
     _fields_ = [
-        ('a', c_int),
-        ('b', c_int),
-        ('c', c_int),
+        ('a', ctypes.c_int),
+        ('b', ctypes.c_int),
+        ('c', ctypes.c_int),
     ]
 
 data = Data()
