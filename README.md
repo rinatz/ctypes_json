@@ -47,13 +47,13 @@ for key, value in data.items():
     ...
 ```
 
-### Convert pure dict object
+### Convert to pure dict object
 
 ```python
 data.dict
 ```
 
-### Convert JSON
+### Convert to JSON
 
 ```python
 import json
