@@ -40,7 +40,7 @@ class CDataJSONEncoder(JSONEncoder):
     _traverse_union = _traverse_structure
 
 
-def dictional(cls):
+def dictmixin(cls):
     def __getitem__(self, item):
         return getattr(self, item)
 

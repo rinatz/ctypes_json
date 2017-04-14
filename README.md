@@ -12,7 +12,7 @@ No dependencies.
 import ctypes
 import binaries
 
-@binaries.dictional
+@binaries.dictmixin
 class Data(ctypes.Structure):
     _fields_ = [
         ('a', ctypes.c_int),
