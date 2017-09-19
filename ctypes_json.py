@@ -9,6 +9,15 @@ class CDataJSONEncoder(JSONEncoder):
         if isinstance(obj, Array):
             return [self.default(e) for e in obj]
 
+        if isinstance(obj, _Pointer):
+            return self.default(obj.contents) if obj else None
+
+        if isinstance(obj, _SimpleCData):
+            return self.default(obj.value)
+
+        if isinstance(obj, (bool, int, float, bytes, str)):
+            return obj
+
         if isinstance(obj, (Structure, Union)):
             result = {}
             anonymous = getattr(obj, '_anonymous_', [])
@@ -26,14 +35,5 @@ class CDataJSONEncoder(JSONEncoder):
                     result[key] = self.default(value)
 
             return result
-
-        if isinstance(obj, _Pointer):
-            return self.default(obj.contents) if obj else None
-
-        if isinstance(obj, _SimpleCData):
-            return self.default(obj.value)
-
-        if isinstance(obj, (bool, int, float, bytes, str)):
-            return obj
 
         return JSONEncoder.default(self, obj)
