@@ -4,6 +4,9 @@ from ctypes import Array, Structure, Union, _Pointer, _SimpleCData
 from json import JSONEncoder
 
 
+__version__ = '1.0.0'
+
+
 class CDataJSONEncoder(JSONEncoder):
     def default(self, obj):
         if isinstance(obj, (Array, list)):
