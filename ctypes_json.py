@@ -25,7 +25,7 @@ class CDataJSONEncoder(JSONEncoder):
             for key, _ in getattr(obj, '_fields_', []):
                 value = getattr(obj, key)
 
-                # private fields doesn't encode
+                # private fields don't encode
                 if key.startswith('_'):
                     continue
 
