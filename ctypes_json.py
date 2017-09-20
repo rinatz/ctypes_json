@@ -6,7 +6,7 @@ from json import JSONEncoder
 
 class CDataJSONEncoder(JSONEncoder):
     def default(self, obj):
-        if isinstance(obj, Array):
+        if isinstance(obj, (Array, list)):
             return [self.default(e) for e in obj]
 
         if isinstance(obj, _Pointer):
