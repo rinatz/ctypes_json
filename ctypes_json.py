@@ -15,7 +15,10 @@ class CDataJSONEncoder(JSONEncoder):
         if isinstance(obj, _SimpleCData):
             return self.default(obj.value)
 
-        if isinstance(obj, (bool, int, float, bytes, str)):
+        if isinstance(obj, (bool, int, float, str)):
+            return obj
+
+        if obj is None:
             return obj
 
         if isinstance(obj, (Structure, Union)):
