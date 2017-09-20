@@ -22,7 +22,7 @@ class CDataJSONEncoder(JSONEncoder):
             result = {}
             anonymous = getattr(obj, '_anonymous_', [])
 
-            for key, _ in getattr(obj, '_fields_', []):
+            for key, *_ in getattr(obj, '_fields_', []):
                 value = getattr(obj, key)
 
                 # private fields don't encode
